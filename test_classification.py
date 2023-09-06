@@ -52,6 +52,7 @@ def generate_eval_set():
 def test():
     # load eval set queue.
     eval_set_queue = generate_eval_set()
+    TOTAL_REGION = len(eval_set_queue)
 
     # build the tensorflow graph.
     with tf.Graph().as_default() as g:
@@ -80,10 +81,13 @@ def test():
             stats['d'] = [0, 0, 0]  # [TP, FP, FN] for downtown/commercial.
 
             # initialize the result
-            for ind in xrange(1, 66):
+            for ind in xrange(1, TOTAL_REGION):
                 result_list.append([ind, 0, 0, 0, 0]) #[region_index, TP, TN, FP, FN]
 
-            for step in xrange(1, 936):
+            step = 0
+            while eval_set_queue:
+                step += 1
+
                 start_time = time.time()
                 # load data
                 minibatch = []

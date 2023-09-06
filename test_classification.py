@@ -58,7 +58,7 @@ def test():
     with tf.Graph().as_default() as g:
         img_placeholder = tf.placeholder(tf.float32, shape=[BATCH_SIZE, IMAGE_SIZE, IMAGE_SIZE, 3])
 
-        logits, _ = inception.inference(img_placeholder, NUM_CLASSES)
+        logits, _, _ = inception.inference(img_placeholder, NUM_CLASSES)
 
         saver = tf.train.Saver(tf.all_variables())
 

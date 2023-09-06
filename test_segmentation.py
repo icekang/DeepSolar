@@ -67,6 +67,7 @@ def generate_eval_set():
 
 def test():
     eval_set_queue = generate_eval_set()
+    TOTAL_REGION = len(eval_set_queue)
 
     with tf.Graph().as_default() as g:
         img_placeholder = tf.placeholder(tf.float32, shape=[1, IMAGE_SIZE, IMAGE_SIZE, 3])
@@ -131,10 +132,10 @@ def test():
 
             # store both true and estimate total pixel areas for each region
             true_total_area = {}
-            for i in xrange(1, 66):
+            for i in xrange(1, TOTAL_REGION + 1):
                 true_total_area[i] = 0.0
             estimiate_total_area = {}
-            for i in xrange(1, 66):
+            for i in xrange(1, TOTAL_REGION + 1):
                 estimiate_total_area[i] = 0.0
 
             for step in xrange(1, len(eval_set_queue)+1):
@@ -206,7 +207,7 @@ def test():
 
             # save csv for region-level comparison of true total area and estimated total area.
             result_list = []
-            for i in xrange(1, 66):
+            for i in xrange(1, TOTAL_REGION + 1):
                 result_list.append([i, true_total_area[i], estimiate_total_area[i],
                                    float(estimiate_total_area[i] - true_total_area[i])/float(true_total_area[i])])
             with open(os.path.join("region_level_area_estimation.csv"), 'wb') as f:

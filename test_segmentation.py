@@ -186,12 +186,12 @@ def test():
             abs_error_sum_r = 0
             for e in area_error['r']:
                 abs_error_sum_r += abs(e)
-            abs_error_rate_r = float(abs_error_sum_r)/float(len(area_error['r']))
+            abs_error_rate_r = float(abs_error_sum_r)/float(len(area_error['r']) + 0.00000001)
 
             abs_error_sum_d = 0
             for e in area_error['d']:
                 abs_error_sum_d += abs(e)
-            abs_error_rate_d = float(abs_error_sum_d) / float(len(area_error['d']))
+            abs_error_rate_d = float(abs_error_sum_d) / float(len(area_error['d']) + 0.00000001)
 
             precision_r = float(stats['r'][0]) / float(stats['r'][0] + stats['r'][1] + 0.00000001)
             recall_r = float(stats['r'][0]) / float(stats['r'][0] + stats['r'][2] + + 0.00000001)
@@ -209,7 +209,7 @@ def test():
             result_list = []
             for i in xrange(1, TOTAL_REGION + 1):
                 result_list.append([i, true_total_area[i], estimiate_total_area[i],
-                                   float(estimiate_total_area[i] - true_total_area[i])/float(true_total_area[i])])
+                                   float(estimiate_total_area[i] - true_total_area[i])/(float(true_total_area[i]) + 0.00000001)])
             with open(os.path.join("region_level_area_estimation.csv"), 'wb') as f:
                 writer = csv.writer(f)
                 writer.writerow(['region', 'true pixel area', 'estimiated pixel area', 'relative difference'])

@@ -1,0 +1,15 @@
+inception/*
+
+# Model checkpoint
+ckpt/*
+
+# Dataset
+*SPI*
+
+# Data list
+*.pickle
+
+# Result
+segmentation_results
+region_level_area_estimation.csv
+eval_result.csv

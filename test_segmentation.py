@@ -165,7 +165,7 @@ def test():
                         skimage.io.imsave(os.path.join(RESULT_DIR, 'TP', str(region_index) + '_' + str(img_index) + '_original.png'),img)
                         skimage.io.imsave(os.path.join(RESULT_DIR, 'TP', str(region_index) + '_' + str(img_index) + '_CAM.png'), img)
                         # compare with ground truth segmentation.
-                        true_seg_img = skimage.io.imread(os.path.join(FLAGS.eval_set_dir, str(region_index), str(img_index)+'_true_seg.png'))
+                        true_seg_img = skimage.io.imread(os.path.join(FLAGS.eval_set_dir, str(region_index), str(label[0]), str(img_index)+'_true_seg.png'))
                         true_seg_img /= 255.0
                         true_pixel_area = np.sum(true_seg_img)
                         true_pixel_area = true_pixel_area * (100 * 100) / (320 * 320)
@@ -176,7 +176,7 @@ def test():
                     if label == [1]:  # FN
                         stats[region_type][2] += 1
                         true_seg_img = skimage.io.imread(
-                            os.path.join(FLAGS.eval_set_dir, str(region_index), str(img_index) + '_true_seg.png'))
+                            os.path.join(FLAGS.eval_set_dir, str(region_index), str(label[0]), str(img_index) + '_true_seg.png'))
                         true_seg_img /= 255.0
                         true_pixel_area = np.sum(true_seg_img)
                         true_pixel_area = true_pixel_area * (100 * 100) / (320 * 320)

@@ -20,7 +20,7 @@ from inception.slim import slim
 
 FLAGS = tf.app.flags.FLAGS
 
-tf.app.flags.DEFINE_string('ckpt_dir', 'ckpt/inception_classification',
+tf.app.flags.DEFINE_string('checkpoint_dir', 'ckpt/inception_classification',
                            """Directory for restoring trained model checkpoints.""")
 
 BATCH_SIZE = 100

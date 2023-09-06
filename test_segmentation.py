@@ -157,13 +157,13 @@ def test():
                         stats[region_type][1] += 1
                         # save original image and CAM.
                         skimage.io.imsave(os.path.join(RESULT_DIR, 'FP', str(region_index) + '_' + str(img_index) + '_original.png'), img)
-                        skimage.io.imsave(os.path.join(RESULT_DIR, 'FP', str(region_index) + '_' + str(img_index) + '_CAM.png'), img)
+                        skimage.io.imsave(os.path.join(RESULT_DIR, 'FP', str(region_index) + '_' + str(img_index) + '_CAM.png'), CAM_val)
 
                     else: # TP
                         stats[region_type][0] += 1
                         # save original image and CAM.
                         skimage.io.imsave(os.path.join(RESULT_DIR, 'TP', str(region_index) + '_' + str(img_index) + '_original.png'),img)
-                        skimage.io.imsave(os.path.join(RESULT_DIR, 'TP', str(region_index) + '_' + str(img_index) + '_CAM.png'), img)
+                        skimage.io.imsave(os.path.join(RESULT_DIR, 'TP', str(region_index) + '_' + str(img_index) + '_CAM.png'), CAM_val)
                         # compare with ground truth segmentation.
                         true_seg_img = skimage.io.imread(os.path.join(FLAGS.eval_set_dir, str(region_index), str(label[0]), str(img_index)+'_true_seg.png'))
                         true_seg_img = true_seg_img.astype(float)

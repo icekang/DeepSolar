@@ -98,7 +98,7 @@ def test():
                 image_list = [load_image(d[0]) for d in minibatch]
                 label_list = [d[1] for d in minibatch]
                 index_list = [d[2] for d in minibatch]
-                type_list = [d[4] for d in minibatch]
+                type_list = [d[4].strip() for d in minibatch]
 
                 image_batch = np.array(image_list)
 
